@@ -9,13 +9,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+
+        <activity android:name=".MainMenuActivity">
+        </activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".PuzzleTypeSelectActivity" android:parentActivityName=".MainMenuActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainMenuActivity"/>
+        </activity>
+        <activity android:name=".PuzzleFilterActivity" android:parentActivityName=".PuzzleTypeSelectActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".PuzzleTypeSelectActivity"/>
+        </activity>
+        <activity android:name=".PuzzleActivity" android:parentActivityName=".PuzzleFilterActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".PuzzleFilterActivity"/>
+        </activity>
+        <activity android:name=".PuzzleCreatorActivity" android:parentActivityName=".MainMenuActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainMenuActivity"/>
+        </activity>
+        <activity android:name=".StatsActivity" android:parentActivityName=".MainMenuActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainMenuActivity"/>
+        </activity>
+        <activity android:name=".OptionsMenuActivity" android:parentActivityName=".MainMenuActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainMenuActivity"/>
         </activity>
     </application>
 

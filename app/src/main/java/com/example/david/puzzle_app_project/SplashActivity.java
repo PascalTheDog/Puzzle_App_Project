@@ -13,7 +13,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        final Intent mainActivity = new Intent(this, MainActivity.class);
+        final Intent mainActivity = new Intent(this, MainMenuActivity.class);
         Thread timer = new Thread() {
           public void run() {
               try {

@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">Puzzle_App_Project</string>
+    <string name="app_name">Puzzle App Project</string>
+
+    <!--Text for "Main Menu Activity" buttons-->
+    <string name="puzzles_button_text">Puzzles</string>
+    <string name="creator_button_text">Puzzle Creator</string>
+    <string name="stats_button_text">Stats</string>
+    <string name="options_button_text">Options</string>
+
+    <!--Text for "Puzzle Type Activity" buttons-->
+    <string name="cryptic_crossword_button_text">Cryptic Crosswords</string>
+
+    <!--Text for "Puzzle Filter Activity" buttons-->
+    <string name="start_puzzle_button_text">Start Puzzle</string>
+
+    <!--Text for "Puzzle Activity" buttons-->
+    <string name="save_and_quit_button_text">Save and Quit</string>
 </resources>
