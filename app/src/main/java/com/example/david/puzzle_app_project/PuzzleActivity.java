@@ -7,11 +7,14 @@ import android.view.View;
 
 public class PuzzleActivity extends AppCompatActivity
 {
+    private PuzzleView m_puzzleView;
+
     @Override
     protected void onCreate(Bundle _savedInstanceState)
     {
         super.onCreate(_savedInstanceState);
-        setContentView(R.layout.puzzle_activity);
+        m_puzzleView = new PuzzleView(this);
+        setContentView(m_puzzleView);
     }
 
     public void StartMainMenuActivity(View _view)
