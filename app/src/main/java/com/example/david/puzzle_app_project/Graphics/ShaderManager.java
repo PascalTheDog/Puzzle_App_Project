@@ -1,13 +1,15 @@
-package com.example.david.puzzle_app_project;
+package com.example.david.puzzle_app_project.Graphics;
 
 import android.content.Context;
 import android.opengl.GLES20;
+
+import com.example.david.puzzle_app_project.R;
 
 import static com.example.david.puzzle_app_project.FileManager.ReturnFileAsString;
 
 public class ShaderManager
 {
-    enum ShaderType
+    public enum ShaderType
     {
         Basic
     }

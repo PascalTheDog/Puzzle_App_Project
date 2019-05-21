@@ -1,4 +1,4 @@
-package com.example.david.puzzle_app_project;
+package com.example.david.puzzle_app_project.Graphics;
 
 import android.opengl.Matrix;
 

@@ -1,13 +1,15 @@
-package com.example.david.puzzle_app_project;
+package com.example.david.puzzle_app_project.Graphics.RenderMethods;
 
 import android.content.Context;
+
+import com.example.david.puzzle_app_project.Graphics.Buffers;
 
 
 public abstract class RenderMethod
 {
-    protected Context m_context;
+    Context m_context;
 
-    public RenderMethod(Context _context)
+    RenderMethod(Context _context)
     {
         m_context = _context;
     }

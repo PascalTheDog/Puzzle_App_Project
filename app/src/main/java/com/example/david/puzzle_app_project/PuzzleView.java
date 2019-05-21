@@ -3,6 +3,8 @@ package com.example.david.puzzle_app_project;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 
+import com.example.david.puzzle_app_project.Graphics.PuzzleRenderer;
+
 public class PuzzleView extends GLSurfaceView
 {
     private final PuzzleRenderer m_renderer;

@@ -1,8 +1,13 @@
-package com.example.david.puzzle_app_project;
+package com.example.david.puzzle_app_project.Graphics;
 
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+
+import com.example.david.puzzle_app_project.Graphics.RenderMethods.BasicRenderMethod;
+import com.example.david.puzzle_app_project.Graphics.RenderObjects.RegularPolygon;
+import com.example.david.puzzle_app_project.Graphics.RenderObjects.Rectangle;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -12,13 +17,14 @@ public class PuzzleRenderer implements GLSurfaceView.Renderer
 
     private Camera m_camera;
 
-    private RectangleShape m_testSquare;
+    private Rectangle m_testSquare;
+    private RegularPolygon m_testCircle;
     private BasicRenderMethod m_testRenderMethod;
 
     private double m_angle = 0.0;
 
 
-    PuzzleRenderer(Context _context)
+    public PuzzleRenderer(Context _context)
     {
         m_context = _context;
         ShaderManager.ResetProgramHandles();
@@ -27,7 +33,8 @@ public class PuzzleRenderer implements GLSurfaceView.Renderer
 
     private void Initialise()
     {
-        m_testSquare = new RectangleShape();
+        m_testSquare = new Rectangle();
+        m_testCircle = new RegularPolygon((short)60);
         m_testRenderMethod = new BasicRenderMethod(m_context);
     }
 
@@ -51,13 +58,20 @@ public class PuzzleRenderer implements GLSurfaceView.Renderer
         // The main loop will go here.
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
-        float red = (float)Math.sin(m_angle);
-        float green = (float)Math.sin(m_angle + 10);
-        float blue = (float)Math.sin(m_angle + 20);
-        m_angle = (m_angle + 0.05) % 360;
+        float x = (float)Math.sin(m_angle);
+        float y = (float)Math.sin(m_angle + 2);
+        float z = (float)Math.sin(m_angle + 4);
+        float red = x / 2;
+        float green = y / 2;
+        float blue = z / 2;
 
-        m_testSquare.SetSolidColour(red, green, blue, 1.0f);
+        m_angle = (m_angle + 0.015) % (2 * Math.PI);
+
+        m_testSquare.SetSolidColour(blue, red, green, 1.0f);
         m_testSquare.Render(m_testRenderMethod, m_camera);
+        m_testCircle.SetSolidColour(red, green, blue, 0.7f);
+        m_testCircle.GetOrientation().SetPosition(x, y, z);
+        m_testCircle.Render(m_testRenderMethod, m_camera);
     }
 
     private void InitialiseCamera(int _width, int _height)

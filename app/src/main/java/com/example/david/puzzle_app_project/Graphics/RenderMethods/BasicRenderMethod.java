@@ -1,7 +1,10 @@
-package com.example.david.puzzle_app_project;
+package com.example.david.puzzle_app_project.Graphics.RenderMethods;
 
 import android.content.Context;
 import android.opengl.GLES20;
+
+import com.example.david.puzzle_app_project.Graphics.Buffers;
+import com.example.david.puzzle_app_project.Graphics.ShaderManager;
 
 
 public class BasicRenderMethod extends RenderMethod
@@ -36,7 +39,6 @@ public class BasicRenderMethod extends RenderMethod
             GLES20.glVertexAttribPointer(positionHandle, COORDS_PER_VERTEX, GLES20.GL_FLOAT,
                     false, vertexStride, _buffers.GetVertexBuffer());
 
-            // TODO: This should use the colour buffer instead.
             GLES20.glUniform4fv(colourHandle, 1, _colours, 0);
             GLES20.glUniformMatrix4fv(mvpMatrixHandle, 1, false, _mvpMatrix,0);
 
