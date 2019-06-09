@@ -11,6 +11,8 @@ import com.example.david.puzzle_app_project.Graphics.RenderObjects.Rectangle;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import static com.example.david.puzzle_app_project.Graphics.ShaderManager.CreateProgramHandles;
+
 public class PuzzleRenderer implements GLSurfaceView.Renderer
 {
     private Context m_context;
@@ -27,20 +29,23 @@ public class PuzzleRenderer implements GLSurfaceView.Renderer
     public PuzzleRenderer(Context _context)
     {
         m_context = _context;
-        ShaderManager.ResetProgramHandles();
         Initialise();
     }
 
     private void Initialise()
     {
         m_testSquare = new Rectangle();
+        m_testSquare.SetTexture(TextureManager.Texture.TEST);
         m_testCircle = new RegularPolygon((short)60);
-        m_testRenderMethod = new BasicRenderMethod(m_context);
+        m_testCircle.SetTexture(TextureManager.Texture.TEST);
+        m_testRenderMethod = new BasicRenderMethod();
     }
 
     @Override
     public void onSurfaceCreated(GL10 gl10, EGLConfig eglConfig)
     {
+        ShaderManager.CreateProgramHandles(m_context);
+        TextureManager.CreateTextureHandles(m_context);
         gl10.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         gl10.glClearDepthf(1.0f);
     }
@@ -67,7 +72,7 @@ public class PuzzleRenderer implements GLSurfaceView.Renderer
 
         m_angle = (m_angle + 0.015) % (2 * Math.PI);
 
-        m_testSquare.SetSolidColour(blue, red, green, 1.0f);
+        //m_testSquare.SetSolidColour(blue, red, green, 1.0f);
         m_testSquare.Render(m_testRenderMethod, m_camera);
         m_testCircle.SetSolidColour(red, green, blue, 0.7f);
         m_testCircle.GetOrientation().SetPosition(x, y, z);

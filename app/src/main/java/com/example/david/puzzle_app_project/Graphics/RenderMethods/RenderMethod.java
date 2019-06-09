@@ -1,18 +1,9 @@
 package com.example.david.puzzle_app_project.Graphics.RenderMethods;
 
-import android.content.Context;
-
-import com.example.david.puzzle_app_project.Graphics.Buffers;
+import com.example.david.puzzle_app_project.Graphics.RenderObjects.RenderObject;
 
 
 public abstract class RenderMethod
 {
-    Context m_context;
-
-    RenderMethod(Context _context)
-    {
-        m_context = _context;
-    }
-
-    public abstract void Render(Buffers _buffers, float[] _mvpMatrix, float[] _colours);
+    public abstract void Render(float[] _mvpMatrix, RenderObject _renderObject);
 }

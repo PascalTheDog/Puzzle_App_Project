@@ -14,6 +14,7 @@ public class Buffers
     private FloatBuffer m_vertexBuffer;
     private FloatBuffer m_colourBuffer;
     private ShortBuffer m_drawOrderBuffer;
+    private FloatBuffer m_textureBuffer;
 
 
     private static FloatBuffer InitialiseFloatBuffer(float[] _inputArray)
@@ -59,4 +60,10 @@ public class Buffers
         m_drawOrderBuffer = InitialiseShortBuffer(_drawOrder);
     }
     public ShortBuffer GetDrawOrderBuffer() {return m_drawOrderBuffer;}
+
+    public void SetTextureBuffer(float[] _textureCoordinates)
+    {
+        m_textureBuffer = InitialiseFloatBuffer(_textureCoordinates);
+    }
+    public FloatBuffer GetTextureBuffer() {return m_textureBuffer;}
 }

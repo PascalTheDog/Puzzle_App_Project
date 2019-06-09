@@ -11,11 +11,18 @@ public class Rectangle extends Shape
     private static final short DRAW_ORDER[] = {
             0, 1, 2, 0, 2, 3
     };
+    private static final float TEXTURE_COORDS[] = {
+            0.0f, 0.0f,
+            0.0f, 1.0f,
+            1.0f, 1.0f,
+            1.0f, 0.0f
+    };
 
     public Rectangle()
     {
         m_vertices = SQUARE_COORDS;
         m_drawOrder = DRAW_ORDER;
+        m_textureCoordinates = TEXTURE_COORDS;
     }
 
     public Rectangle(float _relativeWidth, float _relativeHeight)
@@ -43,5 +50,18 @@ public class Rectangle extends Shape
                 xMax, yMax, 0.0f
         };
         m_drawOrder = DRAW_ORDER;
+
+        float xMaxTex = 0.5f + xMax;
+        float xMinTex = 0.5f - xMax;
+
+        float yMaxTex = 0.5f - yMax;
+        float yMinTex = 0.5f + yMax;
+
+        m_textureCoordinates = new float[] {
+                xMinTex, yMaxTex,
+                xMinTex, yMinTex,
+                xMaxTex, yMinTex,
+                xMaxTex, yMaxTex
+        };
     }
 }
